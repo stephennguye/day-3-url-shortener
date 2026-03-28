@@ -6,18 +6,14 @@ shortener = URLShortener()
 
 @app.route("/", methods=['POST', 'GET'])
 def home():
-    try: 
-        if request.method == 'POST':
-            original_url = request.form["url"]
-            short_url = shortener.shorten_url(original_url)
-            return render_template("ui.html", new_url=short_url, old_url=original_url)
-        else:
-            return render_template("ui.html")
-    
-    except Exception as e:
-        return f"Error: {e}"
+    if request.method == 'POST':
+        original_url = request.form["url"]
+        short_url = shortener.shorten_url(original_url)
+        return render_template("ui.html", new_url=short_url, old_url=original_url)
+    else:
+        return render_template("ui.html")
     
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
 
     
