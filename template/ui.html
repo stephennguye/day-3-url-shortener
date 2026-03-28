@@ -12,13 +12,19 @@
       id="url"
       placeholder="https://www.xyz.com"
       pattern="https://.*" size="50"
-        value="{{old_url}}"
+        value="{{old_url or '' }}"
       required  
     >
     <button type="submit" value="submit">Submit</button>
     <br>
     <label>Generated URL: </label>
-    <input name="generated_url" value="{{new_url}}" style="margin-top: 10px; margin-left:35px" size="50"></input>
+    <input 
+        name="generated_url" 
+        value="{{ new_url or '' }}" 
+        style="margin-top: 10px; margin-left:35px" 
+        size="50"
+        readonly
+    >
   </form>
 </body>
 </html>
